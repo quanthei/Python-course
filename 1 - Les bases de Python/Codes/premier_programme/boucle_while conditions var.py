@@ -23,14 +23,12 @@ def userAgeSituation(
                     para_user_age : int
                     ) -> str:
     if para_user_age <= 18:
-        if para_user_age == 18:
-            return "Tout juste majeur ! Félécitations !"
-        elif para_user_age ==17:
-            return "Vous êtes presque majeur..."
-        else:
-            return "Vous êtes mineur !"
-    else:
-        return "Vous êtes majeur !"
+        if para_user_age < 10: return "Vous êtes un enfant !"
+        elif para_user_age == 18: return "Tout juste majeur ! Félécitations !"
+        elif para_user_age == 17: return "Vous êtes presque majeur..."
+        else: return "Vous êtes mineur !"
+    elif para_user_age > 60: return "Vous êtes un senior !"
+    else : return "Vous êtes majeur !"
 
 def display_user_infos(
                        displayed_user_name : str,
