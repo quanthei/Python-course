@@ -1,0 +1,5 @@
+python -m venv venv #create a python venv
+ls
+mkdir
+cd
+touch
