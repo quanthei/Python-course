@@ -15,7 +15,7 @@ def convert_and_stock_time(remaining_time : int) -> str:
     sec = remaining_time-min*60
     return f"{min:02d}:{sec:02d}"
 
-def display_x_sign_every_x_sec(sign : str, nb_sign : int, every_x_sec : int):
+def display_sign_x_every_x_sec(sign : str, nb_sign : int, every_x_sec : int):
     for i in range(nb_sign):
         time.sleep(every_x_sec)
         print(sign, end="", flush=True)
@@ -23,17 +23,17 @@ def display_x_sign_every_x_sec(sign : str, nb_sign : int, every_x_sec : int):
 def display_line(remaining_time):
     formated_remaining_time = convert_and_stock_time(remaining_time)
     print(f"Temps restant: {formated_remaining_time}",end="")
-    display_x_sign_every_x_sec(".", 10, 1)
+    display_sign_x_every_x_sec(".", 10, 1)
     print("")
 
 def run_program(program_chosen : int):
-    sec_in_min = 60
+    SEC_IN_MIN = 60
     if program_chosen == 1: # Oeufs à la coque : 3 minutes
-        remaining_sec = sec_in_min * 3
+        remaining_sec = SEC_IN_MIN * 3
     elif program_chosen == 2: # Oeufs mollets : 6 minutes
-        remaining_sec = sec_in_min * 6
+        remaining_sec = SEC_IN_MIN * 6
     else:
-        remaining_sec = sec_in_min * 9 # Oeufs durs : 9 minutes
+        remaining_sec = SEC_IN_MIN * 9 # Oeufs durs : 9 minutes
 
     while remaining_sec > 0:
         display_line(remaining_sec)
