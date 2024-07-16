@@ -60,7 +60,8 @@ def main():
         time.sleep(3)
 
     # Afficher toutes les personnes en fin de code
+    clear_console()
     for user in users_infos:
-        print(user)
+        print(f"User nº{user[0]}: {user[1]} a {user[2]} ans.", flush=True)
 #---------------------------EXE---------------------------
 main()
