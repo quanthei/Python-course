@@ -21,7 +21,7 @@ def afficher_table_multiplication(table_m: int, min: int, max: int, clear_consol
 #---------------------------MAIN---------------------------
 def main():
     # On demande au user quelle table il souhaite afficher
-    table_multiplication_str = -1
+    table_multiplication_str = 0
     while True:
         table_multiplication_str = input("Merci d'indiquer la table de multiplication que vous souhaitez afficher: ")
         try:
