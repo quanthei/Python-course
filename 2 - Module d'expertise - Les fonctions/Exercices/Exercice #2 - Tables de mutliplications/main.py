@@ -10,7 +10,7 @@ def clear_console():
     else:
         os.system('cls')
 
-def afficher_table_multiplication(table_m: int, min: int, max: int, clear_console_before_print = False):
+def afficher_table_multiplication(table_m: int, min: int = MIN_TABLE_M, max: int = MAX_TABLE_M, clear_console_before_print = False):
     if clear_console_before_print:
         clear_console()
     print(f"Voici la table de {table_m}:" + "\n", flush=True)
@@ -32,7 +32,7 @@ def main():
             break
     
     # Afficher la table souhaitez par le user
-    afficher_table_multiplication(table_multiplication_int, MIN_TABLE_M, MAX_TABLE_M, True)
+    afficher_table_multiplication(table_multiplication_int, clear_console_before_print=True)
 
 #---------------------------EXE---------------------------
 main()
