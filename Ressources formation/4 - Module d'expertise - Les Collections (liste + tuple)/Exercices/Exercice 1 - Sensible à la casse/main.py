@@ -6,8 +6,6 @@ def element_in_liste(el, checked_list: list):
 noms = ["Louise", "Maellia", "Valentine", "Anthony", "Jules", "Maxime"]
 
 name_to_checked = "MaelLia"
-name_to_checked = name_to_checked.lower().capitalize()
-
 if element_in_liste(name_to_checked, noms):
     print(f"{name_to_checked} est présent(e)")
 else:
