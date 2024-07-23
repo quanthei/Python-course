@@ -1,0 +1,64 @@
+import time
+#-------------------------FUNCTIONS-------------------------
+def ask_user_the_program_to_start() -> int:
+    user_admited_choices = [1,2,3]
+    user_choice = 0
+    while user_choice not in user_admited_choices:
+        user_choice = int(input("Merci de sélectionner le programme en indiquant 1, 2 ou 3 : "))
+        print(f"ERREUR: {user_choice} n'est pas une saisie valide !")
+    return user_choice
+
+def convert_and_stock_time(remaining_time : int) -> str:
+    min = remaining_time//60 # division entière (pas de virgules)
+    sec = remaining_time-min*60
+    return f"{min:02d}:{sec:02d}"
+
+def display_sign_x_every_x_sec(sign : str, nb_sign : int, every_x_sec : int):
+    for i in range(nb_sign):
+        time.sleep(every_x_sec)
+        print(sign, end="", flush=True)
+
+def display_line(remaining_time):
+    formated_remaining_time = convert_and_stock_time(remaining_time)
+    print(f"Temps restant: {formated_remaining_time}",end="")
+    display_sign_x_every_x_sec(".", 10, 1)
+    print("")
+
+def run_program(program_chosen : int):
+    SEC_IN_MIN = 60
+    if program_chosen == 1: # Oeufs à la coque : 3 minutes
+        remaining_sec = SEC_IN_MIN * 3
+    elif program_chosen == 2: # Oeufs mollets : 6 minutes
+        remaining_sec = SEC_IN_MIN * 6
+    elif program_chosen == 3:
+        remaining_sec = SEC_IN_MIN * 9 # Oeufs durs : 9 minutes
+    else:
+        print(f"Le programme {program_chosen} n'est pas disponible !")
+        exit()
+    while remaining_sec > 0:
+        display_line(remaining_sec)
+        remaining_sec -= 10
+    
+    print("Vos oeufs sont cuits !")
+        
+#-------------------------MAIN-------------------------
+def main():
+    # Display the main menu for the user
+    print("""
+*******************************************
+**** PROGRAMME DE CUISSON DE VOS OEUFS ****
+*******************************************                                            
+* 1 - Oeufs à la coque : 3 minutes        *
+* 2 - Oeufs mollets : 6 minutes           *
+* 3 - Oeufs durs : 9 minutes              *
+*******************************************
+""")
+    
+    #Ask the user about the program he wants to run
+    program_chosen = ask_user_the_program_to_start()
+
+    #Start the program
+    run_program(program_chosen)
+
+#-------------------------EXE-------------------------
+main()
