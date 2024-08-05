@@ -8,13 +8,14 @@ def get_file_extension(file_name: str) -> str:
         return None
     return file_extension[-1]
     
-def get_file_type(file_extension: str, definition_extensions_list) -> str:
+def get_file_type_description(file_extension: str, definition_extensions_list) -> str:
     if file_extension is None:
         return "Aucune extension"
     else:
         for file_description in definition_extensions_list:
             if file_extension in file_description:
-                return file_description[1]
+                file_extension_description = file_description[1]
+                return file_extension_description
     return "Extension non connue"
         
 fichiers = ("notepad.exe", "mon.fichier.perso.doc", "notes.TXT", "vacances.jpeg", "planning", "data.dat")
@@ -31,10 +32,10 @@ def main():
         file_extension = get_file_extension(file_name=file.lower())
       
         # Fetch file type based on file_extension
-        file_type = get_file_type(file_extension=file_extension, definition_extensions_list=definition_extensions)
+        file_type_description = get_file_type_description(file_extension=file_extension, definition_extensions_list=definition_extensions)
        
         # Return result
-        print(f"{file} ({file_type})")
+        print(f"{file} ({file_type_description})")
         
 #-------------------------EXE-------------------------
 main()
