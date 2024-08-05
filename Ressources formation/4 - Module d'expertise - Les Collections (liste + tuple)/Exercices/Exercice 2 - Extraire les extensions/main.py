@@ -4,9 +4,9 @@
 #-------------------------FUNCTIONS-------------------------
 def get_file_extension(file_name: str) -> str:
     file_extension = file_name.split(".")    
-    if len(file_extension) == 1: # fichier sans extension
-        return None
-    return file_extension[-1]
+    if len(file_extension) > 1: # fichier avec une extension
+        file_extension[-1]
+    return None # fichier sans extension
     
 def get_file_type_description(file_extension: str, definition_extensions_list) -> str:
     if file_extension is None:
