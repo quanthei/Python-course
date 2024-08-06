@@ -8,11 +8,11 @@ class Personne:
     def SePresenter(self):
         print(f"Bonjour je m'appelle {self.nom}", f"J'ai {self.age} ans", sep="\n")
     
-    def demanderNom():
+    def DemanderNom():
         pass    
 
     # EstMajeur -> True/False
-    def estMajeur(self) -> bool:
+    def EstMajeur(self) -> bool:
         if self.age >= 18:
             return True
         return False
@@ -21,7 +21,7 @@ class Personne:
 personne1 = Personne("Thomas", 24) # Je crée une personne
 personne1.SePresenter()
 
-if personne1.estMajeur():
+if personne1.EstMajeur():
     print(f"{personne1.nom} est majeur !")
 else:
     print(f"{personne1.nom} est mineur !")
