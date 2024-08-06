@@ -12,4 +12,4 @@ class Personne:
 
 # --- UTILISATION ---
 personne1 = Personne("Thomas") # Je crée une personne
-personne1.sePresenter()
+personne1.SePresenter()
