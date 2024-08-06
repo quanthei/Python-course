@@ -31,3 +31,4 @@ afficher_informations_personne(nom2, age2)
 nom3 = demander_nom_personne()
 age3 = 18
 afficher_informations_personne(nom3, age3)
+
