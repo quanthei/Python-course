@@ -16,15 +16,14 @@
 class Personne:
     # Construteur
     def __init__(self, nom: str):
-        print(f"Bonjour je m'appelle {nom}")
+        self.nom = nom
 
-    def sePresenter():
-        pass
+    def SePresenter(self):
+        print(f"Bonjour je m'appelle {self.nom}")
     
     def demanderNom():
         pass    
 
 # --- UTILISATION ---
 personne1 = Personne("Thomas") # Je crée une personne
-
- 
+personne1.sePresenter() 
