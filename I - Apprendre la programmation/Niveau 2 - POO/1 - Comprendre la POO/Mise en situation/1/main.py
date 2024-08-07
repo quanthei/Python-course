@@ -19,18 +19,18 @@ class Personne:
 
         print(infos_personne)
 
-        # Afficher genre 
+        # Afficher genre
         if self.genre == None: 
             print("Genre: Non précisé")
         elif self.genre: # Je suis un Homme
             print("Genre : Masculin")
         else: # Je suis une Femme
             print("Genre : Feminin")
-    
+
         # Mineur/Majeur
         if self.age != 0:
             print(self.EstMajeur())
-
+        
     def EstMajeur(self) -> bool:
         infos_personne = "Je suis "
         if self.age >= 18:
@@ -43,11 +43,12 @@ class Personne:
         return infos_personne
 
     def DemanderNom(self) -> str:
+        nom = ""
         while nom == "":
             nom = input("Merci d'indiquer votre prénom: ")
         return nom
 
-personne1 = Personne("Jean", 25)
+personne1 = Personne(age=25)
 personne1.SePresenter()
 
 personne2 = Personne("Emilie")
