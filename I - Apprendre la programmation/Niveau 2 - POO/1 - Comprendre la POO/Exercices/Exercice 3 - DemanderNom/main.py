@@ -1,21 +1,29 @@
 # --- DEFINITION ---
-class Personne:
+class Personne: 
     # Construteur
-    def __init__(self, nom: str, age: int):
-        self.nom = nom
+    def __init__(self, nom: str = "", age: int = 0):
+        if nom == "":
+            self.nom = self.DemanderNom()
+        else:
+            self.nom = nom
         self.age = age
 
     def SePresenter(self):
-        print(f"Bonjour je m'appelle {self.nom}", f"J'ai {self.age} ans", sep="\n")
-
-        if self.EstMajeur():
-            print(f"{personne1.nom} est majeur !")
+        infos_pers = f"Bonjour je m'appelle {self.nom}"
+        if self.age == 0:
+           print(infos_pers) 
         else:
-            print(f"{personne1.nom} est mineur !")
-                
-    def DemanderNom():
-        pass 
+            print(infos_pers, f"J'ai {self.age} ans", sep=". ")
 
+            if self.EstMajeur():
+                print(f"{self.nom} est majeur !")
+            else:
+                print(f"{self.nom} est mineur !")
+                
+    def DemanderNom(self) -> str:
+        nom = input("Merci d'indiquer votre prénom : ")
+        return nom 
+    
     # EstMajeur -> True/False
     def EstMajeur(self) -> bool:
         return self.age >= 18
@@ -24,3 +32,5 @@ class Personne:
 personne1 = Personne("Thomas", 24) # Je crée une personne
 personne1.SePresenter()
 
+personne2 = Personne()
+personne2.SePresenter()
