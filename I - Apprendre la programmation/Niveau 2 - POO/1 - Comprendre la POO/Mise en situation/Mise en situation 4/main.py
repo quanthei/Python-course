@@ -9,7 +9,7 @@ class Personne:
         print(f"Bonjour, je m'appelle {self.nom}")
 
 # ---
-def ajouter_personne(id_personne: int) -> str:
+def demander_nom(id_personne: int) -> str:
     nom = input(f"Nom de la personne {id_personne} à ajouter à la liste: ")
     return nom
 
@@ -17,12 +17,12 @@ noms = []
 id_personne = 1
 
 # Premier passage
-noms.append(ajouter_personne(id_personne))
+noms.append(demander_nom(id_personne))
 
 while True:
     if input(f"Si vous souhaitez ajouter une {id_personne + 1}ème personne entrez 'o': ").lower() == "o":
         id_personne += 1
-        noms.append(ajouter_personne(id_personne))
+        noms.append(demander_nom(id_personne))
     else:
         break
 
