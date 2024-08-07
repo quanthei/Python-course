@@ -2,20 +2,19 @@
 
 # ---
 class Chat:
-    def __int__(self):
-        self.nom = "inconnu"
+    def __init__(self, nom: str = "inconnu"):
+        self.nom = nom # crée une variable d'instance : nom
 
-    def SePresenter(self, nom_facultatif=""):
-        self.nom = nom_facultatif
-        print("Bonjour, je suis un chat et je m'appelle " + self.nom)
+    def SePresenter(self):
+        print(f"Bonjour, je suis un chat et je m'appelle {self.nom}")
 
 # ---
 class Personne:
-    def __int__(self, nom: str):
+    def __init__(self, nom: str = "inconnu"):
         self.nom = nom
 
     def SePresenter(self):
-        print("Bonjour, je suis une personne et je m'appelle " + self.nom)
+        print(f"Bonjour, je suis une personne et je m'appelle {self.nom}")
 
 # ---
 chat1 = Chat()
@@ -24,5 +23,5 @@ chat1.SePresenter()  # Bonjour, je suis un chat et je m'appelle inconnu
 chat2 = Chat("Garfield")
 chat2.SePresenter()  # Bonjour, je suis un chat et je m'appelle Garfield
 
-personne = Personne("Jean")
-Personne.SePresenter()  # Bonjour, je suis une personne et je m'appelle Jean
+personne1 = Personne("Jean")
+personne1.SePresenter()  # Bonjour, je suis une personne et je m'appelle Jean
