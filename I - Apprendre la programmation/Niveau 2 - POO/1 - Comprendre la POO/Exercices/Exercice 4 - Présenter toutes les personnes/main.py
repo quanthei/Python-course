@@ -23,11 +23,11 @@ class Personne:
         return self.age >= 18
     
 # --- UTILISATION ---
-liste_personnes = (
+liste_personnes = [
                   Personne("Jean", 30),
                   Personne("Paul", 15),
                   Personne(age=20)
-                  )
+                  ]
 
 for personne in liste_personnes:
     personne.SePresenter()
