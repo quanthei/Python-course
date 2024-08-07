@@ -1,5 +1,5 @@
 # POO EXERCICE DE MISE EN SITUATION 2
-# Code mal penser car on passe l'âge en argument de la fonction se présenter et non pas comme une variable d'instance ! Il n'est donc pas accesible dans EstMajeur
+# Code mal pensé car on passe l'âge en argument de la fonction se présenter et non pas comme une variable d'instance ! Il n'est donc pas accesible dans EstMajeur
 class Personne:
     def __init__(self, nom: str):
         self.nom = nom   # crée une variable d'instance : nom
