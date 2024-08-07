@@ -28,7 +28,8 @@ class Personne:
             print("Genre : Feminin")
     
         # Mineur/Majeur
-        print(self.EstMajeur())
+        if self.age != 0:
+            print(self.EstMajeur())
 
     def EstMajeur(self) -> bool:
         infos_personne = "Je suis "
@@ -49,5 +50,5 @@ class Personne:
 personne1 = Personne("Jean", 25)
 personne1.SePresenter()
 
-personne2 = Personne("Emilie", 17)
+personne2 = Personne("Emilie")
 personne2.SePresenter()
