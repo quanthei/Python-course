@@ -16,18 +16,29 @@ class Pizza:
         print()
 
 class PizzaPersonnalisee(Pizza):
+    PRIX_DE_BASE = 7.00
+    PRIX_PAR_INGREDIENT = 1.2
+
     def __init__(self):
-        super().__init__("Personnalisée", 0, [])
+        super().__init__("Personnalisée", self.PRIX_DE_BASE, [])
         self.DemanderIngredientsUtilisateur()
 
     def DemanderIngredientsUtilisateur(self) -> str:
         while True:
             new_ingredient = input("Ajoutez un ingrédient (ou ENTER pour terminer): ")
+            print()
             if new_ingredient == "":
                 return None
             self.ingredients.append(new_ingredient)
             print(f"Vous avez {len(self.ingredients)} ingredient(s): {', '.join(self.ingredients)}")
-    
+            self.prix = self.CalculerPrix()
+            print(f"Le prix actuelle de votre pizza est de {self.prix}€")
+            print()
+
+    def CalculerPrix(self) -> float:
+        prix_pizza = self.PRIX_DE_BASE + len(self.ingredients) * self.PRIX_PAR_INGREDIENT
+        return round(prix_pizza,2)
+
 menu_pizzas = [
               Pizza("4 fromages", 12, ("Brie", "Emmental", "Conté", "Parmesan"), True),
               Pizza("Margherita", 9.5, ("Tomate", "Mozzarella", "Basilic"), True),
