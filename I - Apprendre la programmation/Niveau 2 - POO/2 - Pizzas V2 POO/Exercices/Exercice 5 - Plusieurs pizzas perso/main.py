@@ -14,16 +14,19 @@ class Pizza:
         print(f"PIZZA {self.nom}: {self.prix}€" + veg_str)
         print(", ".join(self.ingredients))
         print()
-
+ 
 class PizzaPersonnalisee(Pizza):
     PRIX_DE_BASE = 7.00
     PRIX_PAR_INGREDIENT = 1.2
 
-    def __init__(self):
+    def __init__(self, id_pizza_perso: int):
         super().__init__("Personnalisée", self.PRIX_DE_BASE, [])
+        self.id_pizza_perso = id_pizza_perso
         self.DemanderIngredientsUtilisateur()
 
     def DemanderIngredientsUtilisateur(self) -> str:
+        print()
+        print(f"Ingrédients de la pizza personnalisée numéro {self.id_pizza_perso}:")
         while True:
             new_ingredient = input("Ajoutez un ingrédient (ou ENTER pour terminer): ")
             print()
@@ -44,7 +47,8 @@ menu_pizzas = [
               Pizza("Margherita", 9.5, ("Tomate", "Mozzarella", "Basilic"), True),
               Pizza("Reine", 10.5, ("Tomate", "Jambon", "Champignons", "Mozzarella")),
               Pizza("Burrata", 13.5, ("Tomate", "Champignons", "Burrata"), True),
-              PizzaPersonnalisee()
+              PizzaPersonnalisee(1),
+              PizzaPersonnalisee(2)
               ]
 
 def tri_personnalisé(element):
