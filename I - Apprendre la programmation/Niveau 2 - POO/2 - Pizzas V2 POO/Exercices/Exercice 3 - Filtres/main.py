@@ -23,4 +23,14 @@ menu_pizzas = [
               ]
 
 for pizza in menu_pizzas:
-    pizza.AfficherPizza()
+    # pizza.AfficherPizza()
+    # (1) Que pizza vegi
+    # if pizza.vegetarienne:
+        # pizza.AfficherPizza()
+    # (2) Que pizza pas vegi
+    # if not pizza.vegetarienne:
+        # pizza.AfficherPizza()
+    # (3) Que pizza avec de la tomate
+    # if "Tomate" in pizza.ingredients: pizza.AfficherPizza() 
+    # (4) Que pizza à moins de 10 balles
+    if pizza.prix < 10.0: pizza.AfficherPizza() 
