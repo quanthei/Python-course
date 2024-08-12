@@ -1,5 +1,6 @@
 class Question():
     id_question = 0
+    user_score = 0
 
     def __init__(self, question: str, answers: tuple, correct_answer: str):
         self.question = question
@@ -8,7 +9,6 @@ class Question():
         self.id_max_answer = len(self.answers)
         self.user_answer = ""
         self.id_correct_answer = self.answers.index(correct_answer) + 1
-        self.score = 0
     
     def AskQuestion(self):
         Question.id_question +=1
@@ -27,15 +27,18 @@ class Question():
 
         # Increment score if user answer is correct
         if self.UserAnswerIsCorrect(): 
-            print("Bonne réponse !")
+            print("Bonne réponse !", flush=True)
             self.IncrementScore()
-            print(f"Votre score est de {self.score}/{len(questionnaire)}")
+            print(f"Votre score est de {Question.user_score}/{len(questionnaire)}")
+        else:
+            print("Mauvaise réponse !", flush=True)
+            print(f"Votre score est de {Question.user_score}/{len(questionnaire)}")
 
     def AskUserAnswer(self) -> int:
         user_answer_str = input(f"Votre réponse (entre {self.id_min_answer} et {self.id_max_answer}): ")
         try:
             reponse_int = int(user_answer_str)
-            if min <= reponse_int <= max:
+            if self.id_min_answer <= reponse_int <= self.id_max_answer:
                 return reponse_int
             print(f"ERREUR : Vous devez rentrer un nombre entre {self.id_min_answer} et {self.id_max_answer}")
         except:
@@ -46,7 +49,7 @@ class Question():
         return True if self.id_correct_answer == self.user_answer else False
 
     def IncrementScore(self):
-        self.score += 1
+        Question.user_score += 1
 
 questionnaire = (
                 Question("Quelle est la capitale de la France ?", ("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris"), 
