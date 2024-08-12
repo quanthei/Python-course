@@ -55,7 +55,7 @@ class Questionnaire():
             ongoing_question = Question(*question_data)  # Décompose le tuple pour créer une instance de Question
             if ongoing_question.AskQuestion():
                 user_score += 1
-            print(f"\nScore actuel: {user_score}/{Question.id_question}")
+            print(f"\nScore actuel : {user_score}/{Question.id_question}")
                 
         print(f"\nScore final : {user_score}/{len(self.questionnaire)}")
 
