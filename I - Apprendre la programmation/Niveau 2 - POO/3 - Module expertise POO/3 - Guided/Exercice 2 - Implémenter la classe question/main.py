@@ -1,65 +1,58 @@
-# PROJET QUESTIONNAIRE V3 : POO
-#
-# - Pratiquer sur la POO
-# - Travailler sur du code existant
-# - Mener un raisonnement
-#
-# -> Définir les entitées (données, actions)
-#
-# Question
-#    - titre       - str
-#    - choix       - (str)
-#    - bonne_reponse   - str
-#
-#    - poser()  -> bool
-#
-# Questionnaire
-#    - questions      - (Question)
-#
-#    - lancer()
-#
-
-def demander_reponse_numerique_utlisateur(min, max):
-    reponse_str = input("Votre réponse (entre " + str(min) + " et " + str(max) + ") :")
-    try:
-        reponse_int = int(reponse_str)
-        if min <= reponse_int <= max:
-            return reponse_int
-
-        print("ERREUR : Vous devez rentrer un nombre entre", min, "et", max)
-    except:
-        print("ERREUR : Veuillez rentrer uniquement des chiffres")
-    return demander_reponse_numerique_utlisateur(min, max)
+class Question():
+    id_question = 0
     
-
-def poser_question(question):
-    # titre_question, r1, r2, r3, r4, choix_bonne_reponse
-    choix = question[1]
-    bonne_reponse = question[2]
-    print("QUESTION")
-    print("  " + question[0])
-    for i in range(len(choix)):
-        print("  ", i+1, "-", choix[i])
-
-    print()
-    resultat_response_correcte = False
-    reponse_int = demander_reponse_numerique_utlisateur(1, len(choix))
-    if choix[reponse_int-1].lower() == bonne_reponse.lower():
-        print("Bonne réponse")
-        resultat_response_correcte = True
-    else:
-        print("Mauvaise réponse")
+    def __init__(self, question: str, choices: tuple, correct_answer: str):
+        self.question = question
+        self.choices = choices
+        self.user_answer = None
+        self.id_correct_answer = choices.index(correct_answer) + 1
+        self.id_min_choice = 1
+        self.id_max_choice = len(self.choices)
+    
+    def AskQuestion(self):
+        # Display question to user
+        self.DisplayQuestionAndAnswers()
         
-    print()
-    return resultat_response_correcte
+        # Get user answer
+        self.user_answer = self.AskUserAnswer()
+        
+        # Verify user answer
+        if self.AnswerIsGood():
+            print("Bonne réponse")
+        else:
+            print("Mauvaise réponse")
+        print()
+        
+    def DisplayQuestionAndAnswers(self):
+        Question.id_question += 1
+        print(f"----- QUESTION N°{Question.id_question} -----")
+        print(f"  {self.question}")
+        for i in range(len(self.choices)):
+            print("  ", i+1, "-", self.choices[i])
+        print()
 
-
-def lancer_questionnaire(questionnaire):
+    def AskUserAnswer(self) -> int:
+        user_answer_str = input(f"Votre réponse (entre {self.id_min_choice} et {self.id_max_choice}): ")
+        try:
+            user_answer_int = int(user_answer_str)
+            if self.id_min_choice <= user_answer_int <= self.id_max_choice:
+                return user_answer_int
+            print(f"ERREUR : Vous devez rentre un nombre entier rentre {self.id_min_choice} et {self.id_max_choice} !")
+        except:
+            print("ERREUR : Veuillez rentrer uniquement des chiffres !")
+        return self.AskUserAnswer()
+       
+    def AnswerIsGood(self) -> bool:
+        if self.user_answer == self.id_correct_answer:
+            return True
+        return False
+            
+"""def lancer_questionnaire(questionnaire):
     score = 0
     for question in questionnaire:
         if poser_question(question):
             score += 1
-    print("Score final :", score, "sur", len(questionnaire))
+    print("Score final :", score, "sur", len(questionnaire))"""
 
 questionnaire = (
     ("Quelle est la capitale de la France ?", ("Marseille", "Nice", "Paris", "Nantes", "Lille"), "Paris"), 
@@ -67,4 +60,3 @@ questionnaire = (
     ("Quelle est la capitale de la Belgique ?", ("Anvers", "Bruxelles", "Bruges", "Liège"), "Bruxelles")
                 )
 
-lancer_questionnaire(questionnaire)
