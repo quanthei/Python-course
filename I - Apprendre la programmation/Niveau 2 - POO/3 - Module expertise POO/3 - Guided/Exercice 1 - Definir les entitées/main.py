@@ -47,8 +47,6 @@ class Question():
             return True
         return False
             
-    
-    
 """def lancer_questionnaire(questionnaire):
     score = 0
     for question in questionnaire:
