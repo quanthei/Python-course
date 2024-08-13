@@ -1,2 +1,2 @@
-# Power of Thor - Episode 1
-https://www.codingame.com/ide/puzzle/power-of-thor-episode-1
+# Chevaux de course
+https://www.codingame.com/ide/puzzle/horse-racing-duals
