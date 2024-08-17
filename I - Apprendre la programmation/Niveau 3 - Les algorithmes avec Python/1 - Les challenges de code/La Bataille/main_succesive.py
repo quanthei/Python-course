@@ -1,6 +1,8 @@
 import sys
 import math
 
+# Q is more powerful than J
+# Player 1 win the turn !
 
 CARDS_RANKING = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A") # Tuple with cards ranking
 
@@ -13,9 +15,9 @@ def play_a_turn(card_player_1: str, card_player_2: str) -> int:
     card_p1 = list(card_player_1) # convert the card of the player into a list to get the facial value only
     card_p2 = list(card_player_2) # convert the card of the player into a list to get the facial value only
     
-    if CARDS_RANKING.index(card_p1[0]) == CARDS_RANKING.index(card_p1[0]): # Battle
+    if CARDS_RANKING.index(card_p1[0]) == CARDS_RANKING.index(card_p2[0]): # Battle
         return 0
-    elif CARDS_RANKING.index(card_p2[0]) > CARDS_RANKING.index(card_p2[0]): # Player 1 wins over Player 2
+    elif CARDS_RANKING.index(card_p1[0]) > CARDS_RANKING.index(card_p2[0]): # Player 1 wins over Player 2
         return 1
     # Player 2 wins over Player 1
     return 2
@@ -32,6 +34,8 @@ m = int(input())  # the number of cards for player 2
 for i in range(m):
     cardp_2 = input()  # the m cards of player 2
 
+print(cardp_1)
+print(cardp_2)
 # Write an answer using print
 # To debug: print("Debug messages...", file=sys.stderr, flush=True)
 
@@ -56,3 +60,4 @@ while len(cardp_1) != 0 and len(cardp_2) != 0: # on continue de jouer tant que l
 
 print("PLUS DE CARTE")
 # print("PAT")
+
