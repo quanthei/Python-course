@@ -1,24 +1,30 @@
 import sys
 import math
 
-""" FUNCTIONS RETURNS
-0 - BATTLE
-1 - P1 wins
-2 - P2 wins"""
-def highest_card(card_player_1: str, card_player_2: str) -> int:
 
-    # On define un tuple qui vient stocker le card ranking
-    cards_ranking = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+CARDS_RANKING = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A") # Tuple with cards ranking
 
-    if cards_ranking.index(card_player_1) == cards_ranking.index(card_player_2): # Battle
-        print("BATTLE")
-    elif cards_ranking.index(card_player_1) > cards_ranking.index(card_player_2): # Player 1 wins over Player 2
-        print("BATTLE")
-        return "P1"
-        return # Player 2 wins over Player 1
-        return "P1"
+def play_a_turn(card_player_1: str, card_player_2: str) -> int:
+    """ FUNCTION RETURNS
+    0 - BATTLE
+    1 - P1 wins
+    2 - P2 wins
+    """ 
+    card_p1 = list(card_player_1) # convert the card of the player into a list to get the facial value only
+    card_p2 = list(card_player_2) # convert the card of the player into a list to get the facial value only
+    
+    if CARDS_RANKING.index(card_p1[0]) == CARDS_RANKING.index(card_p1[0]): # Battle
+        return 0
+    elif CARDS_RANKING.index(card_p2[0]) > CARDS_RANKING.index(card_p2[0]): # Player 1 wins over Player 2
+        return 1
+    # Player 2 wins over Player 1
+    return 2
 
-
+@staticmethod
+def recompose_decks(deck_to_be_filled, deck_to_be_stripped, cards_player_1, cards_player_2):
+    deck_to_be_filled.extend([cards_player_1, cards_player_2])
+    deck_to_be_stripped.pop(0)
+     
 n = int(input())  # the number of cards for player 1
 for i in range(n):
     cardp_1 = input()  # the n cards of player 1
@@ -29,4 +35,21 @@ for i in range(m):
 # Write an answer using print
 # To debug: print("Debug messages...", file=sys.stderr, flush=True)
 
-print("PAT")
+while len(cardp_1) != 0 and len(cardp_2) != 0: # on continue de jouer tant que les joueurs ont des cartes
+    turn_result = play_a_turn(cardp_1[0], cardp_2[1]) # Play a turn
+    
+    if turn_result == 0: 
+        print("BATTLE")
+    elif turn_result == 1:
+        winning_deck, losing_deck = cardp_1, cardp_2
+        print(f"{cardp_1} is more powerful than {})
+        print("Player 1 win the turn")
+    else:
+        winning_deck, losing_deck = cardp_2, cardp_1
+        print("Player 2 win the turn") 
+        
+    # Recompose the decks
+    recompose_decks(winning_deck, losing_deck, cardp_1, cardp_2)
+
+print("PLUS DE CARTE")
+# print("PAT")
