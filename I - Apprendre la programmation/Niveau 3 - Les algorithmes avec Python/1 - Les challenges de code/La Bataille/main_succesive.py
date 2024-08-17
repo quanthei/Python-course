@@ -36,20 +36,23 @@ for i in range(m):
 # To debug: print("Debug messages...", file=sys.stderr, flush=True)
 
 while len(cardp_1) != 0 and len(cardp_2) != 0: # on continue de jouer tant que les joueurs ont des cartes
-    turn_result = play_a_turn(cardp_1[0], cardp_2[1]) # Play a turn
-    
+    turn_result = play_a_turn(cardp_1[0], cardp_2[0]) # Play a turn
+    winning_deck = []
+    losing_deck = []
+
     if turn_result == 0: 
         print("BATTLE")
-    elif turn_result == 1:
-        winning_deck, losing_deck = cardp_1, cardp_2
-        print(f"{cardp_1} is more powerful than {})
-        print("Player 1 win the turn")
     else:
-        winning_deck, losing_deck = cardp_2, cardp_1
-        print("Player 2 win the turn") 
+        if turn_result == 1:
+            winning_deck, losing_deck = cardp_1, cardp_2
+        else:
+            winning_deck, losing_deck = cardp_2, cardp_1
         
-    # Recompose the decks
-    recompose_decks(winning_deck, losing_deck, cardp_1, cardp_2)
+        print(f"{winning_deck[0]} is more powerful than {losing_deck[0]}")
+        print(f"Player {turn_result} win the turn !")
+        
+        # Recompose the decks
+        recompose_decks(winning_deck, losing_deck, cardp_1[0], cardp_2[0])
 
 print("PLUS DE CARTE")
 # print("PAT")
